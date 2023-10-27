@@ -42,6 +42,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.calculate_a_custom_tip.ui.theme.Calculate_a_custom_tipTheme
+import java.text.NumberFormat
 
 
 class MainActivity : ComponentActivity() {
@@ -119,6 +120,14 @@ fun TipTimeLayout() {
         )
         Spacer(modifier = Modifier.height(150.dp))
     }
+}
+
+private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
+    var tip = tipPercent / 100 * amount
+    if (roundUp) {
+        tip = kotlin.math.ceil(tip)
+    }
+    return NumberFormat.getCurrencyInstance().format(tip)
 }
 
 @Composable
