@@ -50,7 +50,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Calculate_a_custom_tipTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -60,6 +59,14 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
+    var tip = tipPercent / 100 * amount
+    if (roundUp) {
+        tip = kotlin.math.ceil(tip)
+    }
+    return NumberFormat.getCurrencyInstance().format(tip)
 }
 
 @Composable
@@ -122,12 +129,24 @@ fun TipTimeLayout() {
     }
 }
 
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
-    var tip = tipPercent / 100 * amount
-    if (roundUp) {
-        tip = kotlin.math.ceil(tip)
-    }
-    return NumberFormat.getCurrencyInstance().format(tip)
+@Composable
+fun EditNumberField(
+    @StringRes label: Int,
+    @DrawableRes leadingIcon: Int,
+    keyboardOptions: KeyboardOptions,
+    value: String,
+    onValueChanged: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TextField(
+        value = value,
+        singleLine = true,
+        leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
+        modifier = modifier,
+        onValueChange = onValueChanged,
+        label = { Text(stringResource(label)) },
+        keyboardOptions = keyboardOptions
+    )
 }
 
 @Composable
@@ -152,25 +171,7 @@ fun RoundTheTipRow(
     }
 }
 
-@Composable
-fun EditNumberField(
-    @StringRes label: Int,
-    @DrawableRes leadingIcon: Int,
-    keyboardOptions: KeyboardOptions,
-    value: String,
-    onValueChanged: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    TextField(
-        value = value,
-        singleLine = true,
-        leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
-        modifier = modifier,
-        onValueChange = onValueChanged,
-        label = { Text(stringResource(label)) },
-        keyboardOptions = keyboardOptions
-    )
-}
+
 
 @Preview(showBackground = true)
 @Composable
