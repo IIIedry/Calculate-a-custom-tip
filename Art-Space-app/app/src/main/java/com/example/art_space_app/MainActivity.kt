@@ -240,6 +240,34 @@ fun ArtDescriptor(
     }
 }
 
+@Composable
+fun DisplayController(
+    onBackward: () -> Unit,
+    onForward: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.Bottom
+    ) {
+        Button(onClick = onBackward) {
+            Text(
+                text = stringResource(id = R.string.previous),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(100.dp)
+            )
+        }
+        Button(
+            onClick = onForward
+        ) {
+            Text(
+                text = stringResource(id = R.string.next),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(100.dp)
+            )
+        }
+    }
+}
 
 
 
