@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Art_Space_app</string>
+    <string name="art_work_content_desc">this is an art image</string>
+    <string name="art_work_1_title">this is an art image 1</string>
+    <string name="artist_1_name">Artist </string>
+    <string name="art_work_1_year">(1999)</string>
+    <string name="art_work_2_title">this is an art image 2</string>
+    <string name="artist_2_name">Artist </string>
+    <string name="art_work_2_year">(2003)</string>
+    <string name="art_work_3_title">this is an art image 3</string>
+    <string name="artist_3_name">Artist </string>
+    <string name="art_work_3_year">(1917)</string>
+    <string name="art_work_4_title">this is an art image 4</string>
+    <string name="artist_4_name">Artist </string>
+    <string name="art_work_4_year">(2006)</string>
+    <string name="art_work_5_title">this is an art image 5</string>
+    <string name="artist_5_name">Artist </string>
+    <string name="art_work_5_year">(2020)</string>
+    <string name="art_work_7_title">this is an art image 6</string>
+    <string name="artist_7_name">Artist </string>
+    <string name="art_work_7_year">(2000)</string>
+    <string name="previous">previous</string>
+    <string name="next">next</string>
 </resources>

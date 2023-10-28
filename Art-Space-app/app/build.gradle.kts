@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.art_space_app"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.art_space_app"
