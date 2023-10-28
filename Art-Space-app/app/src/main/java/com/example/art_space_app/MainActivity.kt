@@ -187,6 +187,34 @@ fun ArtSpaceScreen() {
     }
 }
 
+@Composable
+fun ArtWorkWall(
+    resourceDrawable: Int,
+    contentDescription: Int
+) {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(500.dp)
+            .border(
+                BorderStroke(2.dp, Color.Gray)
+            ),
+        shadowElevation = 10.dp
+    ) {
+        Image(
+            painter = painterResource(
+                id = resourceDrawable
+            ),
+            contentDescription = stringResource(id = contentDescription),
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .padding(20.dp)
+        )
+    }
+}
+
+
+
 
 
 @Preview(showBackground = true)
