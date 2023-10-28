@@ -139,6 +139,28 @@ fun ArtSpaceScreen() {
                         onForward = { currentState = 5 })
                 }
             }
+            5 -> {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp)
+                ) {
+                    ArtWorkWall(
+                        resourceDrawable = R.drawable.art4,
+                        contentDescription = R.string.art_work_content_desc
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    ArtDescriptor(
+                        titleId = R.string.art_work_5_title,
+                        nameID = R.string.artist_5_name,
+                        yearId = R.string.art_work_5_year
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DisplayController(
+                        onBackward = { currentState = 4 },
+                        onForward = { currentState = 6 })
+                }
+            }
 
         }
     }
