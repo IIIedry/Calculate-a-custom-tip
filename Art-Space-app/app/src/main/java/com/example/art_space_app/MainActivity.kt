@@ -71,6 +71,7 @@ fun ArtSpaceScreen() {
                     )
                 }
             }
+
             2 -> {
                 Column(
                     modifier = Modifier
@@ -93,91 +94,34 @@ fun ArtSpaceScreen() {
                         onForward = { currentState = 3 })
                 }
             }
-        }
-    }
-}
 
-@Composable
-fun ArtWorkWall(
-    resourceDrawable: Int,
-    contentDescription: Int
-) {
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(500.dp)
-            .border(
-                BorderStroke(2.dp, Color.Gray)
-            ),
-        shadowElevation = 10.dp
-    ) {
-        Image(
-            painter = painterResource(
-                id = resourceDrawable
-            ),
-            contentDescription = stringResource(id = contentDescription),
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier
-                .padding(20.dp)
-        )
-    }
-}
-
-@Composable
-fun ArtDescriptor(
-    titleId: Int,
-    nameID: Int,
-    yearId: Int
-) {
-    Surface(
-        shadowElevation = 10.dp
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-        ) {
-            Text(text = stringResource(id = titleId), fontSize = 18.sp)
-            Row {
-                Text(
-                    text = stringResource(id = nameID),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(text = stringResource(id = yearId), fontSize = 16.sp)
+            3 -> {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp)
+                ) {
+                    ArtWorkWall(
+                        resourceDrawable = R.drawable.art6,
+                        contentDescription = R.string.art_work_content_desc
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    ArtDescriptor(
+                        titleId = R.string.art_work_3_title,
+                        nameID = R.string.artist_3_name,
+                        yearId = R.string.art_work_3_year
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DisplayController(
+                        onBackward = { currentState = 2 },
+                        onForward = { currentState = 4 })
+                }
             }
         }
     }
 }
 
-@Composable
-fun DisplayController(
-    onBackward: () -> Unit,
-    onForward: () -> Unit
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Button(onClick = onBackward) {
-            Text(
-                text = stringResource(id = R.string.previous),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.width(100.dp)
-            )
-        }
-        Button(
-            onClick = onForward
-        ) {
-            Text(
-                text = stringResource(id = R.string.next),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.width(100.dp)
-            )
-        }
-    }
-}
+
 
 @Preview(showBackground = true)
 @Composable
