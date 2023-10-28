@@ -36,6 +36,101 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun ArtSpaceScreen() {
+
+    var currentState by remember {
+        mutableStateOf(1)
+    }
+
+    Surface(
+        modifier = Modifier,
+        color = MaterialTheme.colorScheme.background
+    ) {
+    }
+}
+
+@Composable
+fun ArtWorkWall(
+    resourceDrawable: Int,
+    contentDescription: Int
+) {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(500.dp)
+            .border(
+                BorderStroke(2.dp, Color.Gray)
+            ),
+        shadowElevation = 10.dp
+    ) {
+        Image(
+            painter = painterResource(
+                id = resourceDrawable
+            ),
+            contentDescription = stringResource(id = contentDescription),
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .padding(20.dp)
+        )
+    }
+}
+
+@Composable
+fun ArtDescriptor(
+    titleId: Int,
+    nameID: Int,
+    yearId: Int
+) {
+    Surface(
+        shadowElevation = 10.dp
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+        ) {
+            Text(text = stringResource(id = titleId), fontSize = 18.sp)
+            Row {
+                Text(
+                    text = stringResource(id = nameID),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(text = stringResource(id = yearId), fontSize = 16.sp)
+            }
+        }
+    }
+}
+
+@Composable
+fun DisplayController(
+    onBackward: () -> Unit,
+    onForward: () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.Bottom
+    ) {
+        Button(onClick = onBackward) {
+            Text(
+                text = stringResource(id = R.string.previous),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(100.dp)
+            )
+        }
+        Button(
+            onClick = onForward
+        ) {
+            Text(
+                text = stringResource(id = R.string.next),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(100.dp)
+            )
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
