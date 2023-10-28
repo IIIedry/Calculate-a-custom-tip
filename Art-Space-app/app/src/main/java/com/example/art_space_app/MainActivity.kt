@@ -213,6 +213,32 @@ fun ArtWorkWall(
     }
 }
 
+@Composable
+fun ArtDescriptor(
+    titleId: Int,
+    nameID: Int,
+    yearId: Int
+) {
+    Surface(
+        shadowElevation = 10.dp
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+        ) {
+            Text(text = stringResource(id = titleId), fontSize = 18.sp)
+            Row {
+                Text(
+                    text = stringResource(id = nameID),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(text = stringResource(id = yearId), fontSize = 16.sp)
+            }
+        }
+    }
+}
 
 
 
