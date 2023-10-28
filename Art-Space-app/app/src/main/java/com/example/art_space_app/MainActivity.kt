@@ -47,6 +47,31 @@ fun ArtSpaceScreen() {
         modifier = Modifier,
         color = MaterialTheme.colorScheme.background
     ) {
+        when (currentState) {
+            1 -> {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp)
+                ) {
+                    ArtWorkWall(
+                        resourceDrawable = R.drawable.art3,
+                        contentDescription = R.string.art_work_content_desc
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    ArtDescriptor(
+                        titleId = R.string.art_work_1_title,
+                        nameID = R.string.artist_1_name,
+                        yearId = R.string.art_work_1_year
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DisplayController(
+                        onBackward = { currentState = 6 },
+                        onForward = { currentState = 2 }
+                    )
+                }
+            }
+        }
     }
 }
 
